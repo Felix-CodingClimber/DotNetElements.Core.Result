@@ -8,8 +8,21 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj"
-						  OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="..\DotNetElements.Core.Result.SourceGenerator\bin\$(Configuration)\netstandard2.0\DotNetElements.Core.Result.SourceGenerator.dll" PackagePath="analyzers\dotnet\cs" Pack="true" Visible="false" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<PackageId>DotNetElements.Core.Result</PackageId>
+		<Title>DotNetElements - Result</Title>
+		<Description>Custom Result type for .NET</Description>
+		<Authors>Felix-CodingClimber</Authors>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/Felix-CodingClimber/DotNetElements.Core.Result</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageVersion>0.0.1</PackageVersion>
+	</PropertyGroup>
 </Project>

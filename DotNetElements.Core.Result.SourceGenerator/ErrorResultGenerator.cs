@@ -46,7 +46,6 @@ public class ErrorResultGenerator : IIncrementalGenerator
 
         // Get the full type name of the class
         string classNameWithoutTypeParameters = classSymbol.Name;
-        string classNameFull = classSymbol.ToString();
         string typeArgument = classSymbol.TypeArguments[0].ToString();
         string accessibility = classSymbol.DeclaredAccessibility.ToStringFast();
         string? attributeTypeArgument = null;
@@ -63,6 +62,6 @@ public class ErrorResultGenerator : IIncrementalGenerator
         if (attributeTypeArgument is null)
             return null;
 
-		return new ErrorResultToGenerate(classNameFull, classNameWithoutTypeParameters, accessibility, typeArgument, attributeTypeArgument);
+		return new ErrorResultToGenerate(classNameWithoutTypeParameters, accessibility, typeArgument, attributeTypeArgument);
     }
 }

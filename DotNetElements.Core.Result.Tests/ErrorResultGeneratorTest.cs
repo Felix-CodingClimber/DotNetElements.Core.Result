@@ -13,16 +13,10 @@ public partial class ErrorResultGeneratorTest
     public Task GeneratesErrorResultCorrectly()
     {
         string source =
-        @"
+		@"
             using DotNetElements.Core.Result;
 
-            class Program
-            {
-                static void Main(string[] args)
-                {
-
-                }
-            }
+            namespace DotNetElements.Core.Result;
 
             [ErrorResult<int>]
             public partial class ExampleResult<TValue>;
@@ -51,8 +45,6 @@ public partial class ErrorResultGeneratorTest
             assemblyName: "Tests",
             syntaxTrees: [syntaxTree],
             references: references);
-
-        CSharpCompilationDebugHelper.EmitCompilationResult(compilation); // todo remove
 
         // Create an instance of our ErrorResult incremental source generator
         ErrorResultGenerator generator = new();

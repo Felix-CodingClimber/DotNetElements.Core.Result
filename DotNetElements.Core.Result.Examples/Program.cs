@@ -1,1 +1,3 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using DotNetElements.Core.Result;
+
+Console.WriteLine("Hello, World!");
