@@ -20,9 +20,10 @@
 		<Title>DotNetElements - Result</Title>
 		<Description>Custom Result type for .NET</Description>
 		<Authors>Felix-CodingClimber</Authors>
+		<Copyright>Jeremy Honl</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Felix-CodingClimber/DotNetElements.Core.Result</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Felix-CodingClimber/DotNetElements.Core.Result</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageVersion>0.0.4</PackageVersion>
 	</PropertyGroup>
 </Project>
