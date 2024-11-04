@@ -16,7 +16,7 @@ public partial class ErrorResultGeneratorTest
 		@"
             using DotNetElements.Core.Result;
 
-            namespace DotNetElements.Core.Result;
+            namespace DotNetElements.Core.Result.Examples;
 
             [ErrorResult<int>]
             public partial class ExampleResult<TValue>;

@@ -10,7 +10,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace DotNetElements.Core.Result
+namespace DotNetElements.Core.Result.Examples
 {
     public partial class ExampleResult<TValue> : ErrorResult<int>
     {

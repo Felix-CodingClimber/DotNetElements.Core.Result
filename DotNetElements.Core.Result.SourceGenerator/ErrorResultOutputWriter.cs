@@ -18,10 +18,15 @@ internal static class ErrorResultOutputWriter
 //-----------------------------------------------------
 
 using System.Diagnostics.CodeAnalysis;
-
-namespace DotNetElements.Core.Result
+");
+		if (result.NameSpace is not null)
+		{
+            sb.Append(@"
+namespace ").Append(result.NameSpace).Append(@"
 {
-    ").Append(result.Accessibility).Append(" partial class ").Append(result.FullName).Append(" : ErrorResult<").Append(result.TError).Append(@">
+    ");
+		}
+        sb.Append(result.Accessibility).Append(" partial class ").Append(result.FullName).Append(" : ErrorResult<").Append(result.TError).Append(@">
     {
         protected readonly TValue Value;
     
@@ -75,8 +80,13 @@ namespace DotNetElements.Core.Result
 
             return ").Append(result.SimpleName).Append(@".Fail(error);
         }
-    }
+    }");
+
+        if(result.NameSpace is not null)
+        {
+		    sb.Append(@"
 }");
+        }
 
         return sb.ToString();
     }

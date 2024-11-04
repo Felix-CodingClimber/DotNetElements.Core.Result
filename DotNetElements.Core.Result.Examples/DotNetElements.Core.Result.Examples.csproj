@@ -13,7 +13,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.2" />
+		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

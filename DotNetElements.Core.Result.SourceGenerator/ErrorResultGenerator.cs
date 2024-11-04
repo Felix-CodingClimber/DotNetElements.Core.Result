@@ -44,13 +44,14 @@ public class ErrorResultGenerator : IIncrementalGenerator
         if (!classSymbol.IsGenericType || classSymbol.TypeArguments.Length != 1)
             return null;
 
-        // Get the full type name of the class
-        string classNameWithoutTypeParameters = classSymbol.Name;
+		// Get information about the class
+		string classNameWithoutTypeParameters = classSymbol.Name;
         string typeArgument = classSymbol.TypeArguments[0].ToString();
         string accessibility = classSymbol.DeclaredAccessibility.ToStringFast();
-        string? attributeTypeArgument = null;
+        string? nameSpace = classSymbol.GetFullNamespace();
 
 		// Get more information from the ErrorResultAttribute
+		string? attributeTypeArgument = null;
 		foreach (AttributeData attributeData in classSymbol.GetAttributes())
         {
             if (attributeData.AttributeClass is not { MetadataName: ErrorResultAttributeTypeName, IsGenericType: true })
@@ -62,6 +63,6 @@ public class ErrorResultGenerator : IIncrementalGenerator
         if (attributeTypeArgument is null)
             return null;
 
-		return new ErrorResultToGenerate(classNameWithoutTypeParameters, accessibility, typeArgument, attributeTypeArgument);
+		return new ErrorResultToGenerate(nameSpace, classNameWithoutTypeParameters, accessibility, typeArgument, attributeTypeArgument);
     }
 }
