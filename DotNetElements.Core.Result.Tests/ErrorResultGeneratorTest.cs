@@ -24,8 +24,8 @@ public partial class ErrorResultGeneratorTest
                 }
             }
 
-            [ErrorResult]
-            partial class ExampleResult<TValue>;
+            [ErrorResult<int>]
+            public partial class ExampleResult<TValue>;
         ";
 
         return VerifySourceGenerator(source);
@@ -40,7 +40,7 @@ public partial class ErrorResultGeneratorTest
         IEnumerable<PortableExecutableReference> references =
         [
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-            MetadataReference.CreateFromFile(typeof(ErrorResultAttribute).Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(ErrorResultAttribute<>).Assembly.Location),
             MetadataReference.CreateFromFile(Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "netstandard.dll")),
             MetadataReference.CreateFromFile(Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "System.Runtime.dll")),
             MetadataReference.CreateFromFile(Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "System.dll"))
@@ -52,7 +52,7 @@ public partial class ErrorResultGeneratorTest
             syntaxTrees: [syntaxTree],
             references: references);
 
-        //CSharpCompilationDebugHelper.EmitCompilationResult(compilation); // todo remove
+        CSharpCompilationDebugHelper.EmitCompilationResult(compilation); // todo remove
 
         // Create an instance of our ErrorResult incremental source generator
         ErrorResultGenerator generator = new();

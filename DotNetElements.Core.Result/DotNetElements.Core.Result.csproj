@@ -9,7 +9,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj"
-						  OutputItemType="Analyzer" />
+						  OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
 	</ItemGroup>
 
 </Project>

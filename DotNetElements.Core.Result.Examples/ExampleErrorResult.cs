@@ -1,4 +1,4 @@
 ﻿namespace DotNetElements.Core.Result;
 
-[ErrorResult]
-public partial class ExampleErrorResult<TValue>;
+//[ErrorResult<int>]
+//public partial class ExampleErrorResult<TValue>;

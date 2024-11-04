@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -23,6 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj" />
 		<ProjectReference Include="..\DotNetElements.Core.Result\DotNetElements.Core.Result.csproj" />
 	</ItemGroup>
 

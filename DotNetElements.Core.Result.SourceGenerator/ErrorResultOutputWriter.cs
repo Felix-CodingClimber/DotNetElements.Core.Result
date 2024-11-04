@@ -2,9 +2,9 @@
 
 namespace DotNetElements.Core.Result.SourceGenerator;
 
-internal static class ErrorResultGenerationHelper
+internal static class ErrorResultOutputWriter
 {
-    public static string GenerateErrorResultClass(ErrorResultToGenerate result)
+    public static string WriteErrorResultClass(ErrorResultToGenerate result)
     {
         StringBuilder sb = new();
 
@@ -20,9 +20,8 @@ internal static class ErrorResultGenerationHelper
 using System.Diagnostics.CodeAnalysis;
 
 namespace DotNetElements.Core.Result
-{");
-        sb.Append(@"
-    public partial class ").Append(result.FullName).Append(" : ErrorResult<").Append(result.TError).Append(@">
+{
+    ").Append(result.Accessibility).Append(" partial class ").Append(result.FullName).Append(" : ErrorResult<").Append(result.TError).Append(@">
     {
         protected readonly TValue Value;
     
@@ -56,7 +55,7 @@ namespace DotNetElements.Core.Result
         ");
 
         sb.Append(@"
-    public static partial class ").Append(result.SimpleName).Append(@"Helper
+    ").Append(result.Accessibility).Append(" static partial class ").Append(result.SimpleName).Append(@"Helper
     {
         public class ").Append(result.SimpleName).Append(" : ErrorResult<").Append(result.TError).Append(@">
         {
@@ -76,9 +75,8 @@ namespace DotNetElements.Core.Result
 
             return ").Append(result.SimpleName).Append(@".Fail(error);
         }
-    }");
-
-        sb.Append("}");
+    }
+}");
 
         return sb.ToString();
     }
