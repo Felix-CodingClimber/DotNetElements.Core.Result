@@ -16,8 +16,4 @@
 		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.3" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Folder Include="tmpPackages\" />
-	</ItemGroup>
-
 </Project>

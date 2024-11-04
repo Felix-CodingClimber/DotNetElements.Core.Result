@@ -1,7 +1,7 @@
 ﻿using DotNetElements.Core.Result;
 using DotNetElements.Core.Result.Examples;
 
-using static DotNetElements.Core.Result.ExampleErrorResultHelper;
+using static DotNetElements.Core.Result.Examples.ExampleErrorResultHelper;
 
 ExampleErrorResult<string> result = GetExampleResult();
 
