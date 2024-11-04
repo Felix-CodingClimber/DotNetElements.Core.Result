@@ -14,7 +14,7 @@ jobs:
   create_nuget:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     # Install the .NET SDK
     - name: Setup .NET
@@ -25,7 +25,7 @@ jobs:
     - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
 
     # Publish the NuGet package as an artifact, so they can be used in the following jobs
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: nuget
         if-no-files-found: error
@@ -38,7 +38,7 @@ jobs:
     steps:
       # Download the NuGet package created in the previous job
       - name: downloadArtifacts
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: nuget
           path: ${{ env.NuGetDirectory }}
@@ -47,4 +47,4 @@ jobs:
       - name: publishRelease
         uses: softprops/action-gh-release@v2
         with:
-          files: "${{ env.NuGetDirectory }}*.nupkg"
+          files: ${{ env.NuGetDirectory }}/*.nupkg
