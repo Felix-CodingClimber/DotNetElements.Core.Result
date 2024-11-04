@@ -8,10 +8,6 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<RestoreSources>$(RestoreSources);..\DotNetElements.Core.Result.Examples\tmpPackages;https://api.nuget.org/v3/index.json</RestoreSources>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.4" />
 	</ItemGroup>
