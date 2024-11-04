@@ -7,8 +7,16 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<RestoreSources>$(RestoreSources);..\DotNetElements.Core.Result.Examples\tmpPackages;https://api.nuget.org/v3/index.json</RestoreSources>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<ProjectReference Include="..\DotNetElements.Core.Result\DotNetElements.Core.Result.csproj" />
+		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="tmpPackages\" />
 	</ItemGroup>
 
 </Project>
