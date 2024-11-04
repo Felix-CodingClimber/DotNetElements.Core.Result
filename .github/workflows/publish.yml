@@ -2,9 +2,8 @@ name: .NET
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    tags:
+      - "v*.*.*"
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -34,30 +33,18 @@ jobs:
         path: ${{ env.NuGetDirectory }}/*.nupkg
         
   deploy:
-    # Publish only when creating a GitHub Release
-    # https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
-    # You can update this logic if you want to manage releases differently
-    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     needs: [ create_nuget ]
     steps:
       # Download the NuGet package created in the previous job
+      - name: downloadArtifacts
       - uses: actions/download-artifact@v3
         with:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
-      # Install the .NET SDK
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4
+      # Publish a new release
+      - name: publishRelease
+        uses: softprops/action-gh-release@v2
         with:
-          dotnet-version: 8.0.x
-
-      # Publish all NuGet packages to NuGet.org
-      # Use --skip-duplicate to prevent errors if a package with the same version already exists.
-      # If you retry a failed workflow, already published packages will be skipped without error.
-      - name: Publish NuGet package
-        run: |
-          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-          }
+          files: "${{ env.NuGetDirectory }}*.nupkg"
