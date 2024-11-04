@@ -25,5 +25,10 @@
 		<PackageProjectUrl>https://github.com/Felix-CodingClimber/DotNetElements.Core.Result</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Felix-CodingClimber/DotNetElements.Core.Result</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 </Project>
