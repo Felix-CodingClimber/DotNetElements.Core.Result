@@ -32,8 +32,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="ErrorResultGeneratorSnapshotTest.GeneratesErrorResultCorrectly.verified.txt">
-	    <DependentUpon>ErrorResultGeneratorSnapshotTest.cs</DependentUpon>
+	  <None Update="ErrorResultGeneratorTests.GeneratesErrorResultCorrectly.verified.txt">
+	    <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0].Split('(')[0])</ParentFile>
+	    <DependentUpon>ErrorResultGeneratorTests.cs</DependentUpon>
+	  </None>
+	  <None Update="ErrorResultGeneratorSnapshotTests.GeneratesErrorResultCorrectly.verified.txt">
+	    <DependentUpon>ErrorResultGeneratorSnapshotTests.cs</DependentUpon>
 	  </None>
 	</ItemGroup>
 
