@@ -49,6 +49,6 @@ public partial class ErrorResultGeneratorSnapshotTests
 
         driver = driver.RunGenerators(compilation);
 
-        return Verify(driver);
+        return Verify(driver).UseDirectory("SnapshotResults");
     }
 }
