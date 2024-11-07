@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -18,6 +18,8 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="MSTest.TestAdapter" Version="3.6.2" />
 		<PackageReference Include="MSTest.TestFramework" Version="3.6.2" />
+		<PackageReference Include="Verify.MSTest" Version="28.1.3" />
+		<PackageReference Include="Verify.SourceGenerators" Version="2.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,6 +29,12 @@
 
 	<ItemGroup>
 		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="ErrorResultGeneratorSnapshotTest.GeneratesErrorResultCorrectly.verified.txt">
+	    <DependentUpon>ErrorResultGeneratorSnapshotTest.cs</DependentUpon>
+	  </None>
 	</ItemGroup>
 
 </Project>

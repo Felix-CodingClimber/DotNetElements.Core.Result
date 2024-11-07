@@ -7,7 +7,7 @@ namespace DotNetElements.Core.Result.Tests;
 
 [TestClass]
 [UsesVerify]
-public partial class ErrorResultGeneratorTest
+public partial class ErrorResultGeneratorSnapshotTest
 {
     [TestMethod]
     public Task GeneratesErrorResultCorrectly()

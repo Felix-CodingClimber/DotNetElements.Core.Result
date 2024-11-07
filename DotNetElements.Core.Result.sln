@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetElements.Core.Result.Tests", "DotNetElements.Core.Result.Tests\DotNetElements.Core.Result.Tests.csproj", "{853538DE-86C3-404A-86D0-DE5AB705CC1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetElements.Core.Result.SourceGenerator.Tests", "DotNetElements.Core.Result.SourceGenerator.Tests\DotNetElements.Core.Result.SourceGenerator.Tests.csproj", "{853538DE-86C3-404A-86D0-DE5AB705CC1F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetElements.Core.Result.SourceGenerator", "DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj", "{63617830-1FAC-43CC-8208-241AFC6F5D4E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetElements.Core.Result", "DotNetElements.Core.Result\DotNetElements.Core.Result.csproj", "{A4DCAC1B-102B-480D-980F-037D30B103F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetElements.Core.Result.Examples", "DotNetElements.Core.Result.Examples\DotNetElements.Core.Result.Examples.csproj", "{73B06ABB-7336-4052-97E3-22D3B359ACF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetElements.Core.Result.Examples", "DotNetElements.Core.Result.Examples\DotNetElements.Core.Result.Examples.csproj", "{73B06ABB-7336-4052-97E3-22D3B359ACF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetElements.Core.Result.Tests", "DotNetElements.Core.Result.Tests\DotNetElements.Core.Result.Tests.csproj", "{ADE4DDC9-DAA7-48FD-B4BA-824DD929CD18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{73B06ABB-7336-4052-97E3-22D3B359ACF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73B06ABB-7336-4052-97E3-22D3B359ACF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73B06ABB-7336-4052-97E3-22D3B359ACF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE4DDC9-DAA7-48FD-B4BA-824DD929CD18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE4DDC9-DAA7-48FD-B4BA-824DD929CD18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE4DDC9-DAA7-48FD-B4BA-824DD929CD18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE4DDC9-DAA7-48FD-B4BA-824DD929CD18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
