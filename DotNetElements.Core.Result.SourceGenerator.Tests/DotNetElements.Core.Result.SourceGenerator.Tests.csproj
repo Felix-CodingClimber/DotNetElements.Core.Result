@@ -18,6 +18,7 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageReference Include="MSTest.TestAdapter" Version="3.6.2" />
 		<PackageReference Include="MSTest.TestFramework" Version="3.6.2" />
+		<PackageReference Include="Verify.ClipboardAccept" Version="28.1.3" />
 		<PackageReference Include="Verify.MSTest" Version="28.1.3" />
 		<PackageReference Include="Verify.SourceGenerators" Version="2.5.0" />
 	</ItemGroup>
@@ -29,16 +30,6 @@
 
 	<ItemGroup>
 		<Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="ErrorResultGeneratorTests.GeneratesErrorResultCorrectly.verified.txt">
-	    <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0].Split('(')[0])</ParentFile>
-	    <DependentUpon>ErrorResultGeneratorTests.cs</DependentUpon>
-	  </None>
-	  <None Update="ErrorResultGeneratorSnapshotTests.GeneratesErrorResultCorrectly.verified.txt">
-	    <DependentUpon>ErrorResultGeneratorSnapshotTests.cs</DependentUpon>
-	  </None>
 	</ItemGroup>
 
 </Project>

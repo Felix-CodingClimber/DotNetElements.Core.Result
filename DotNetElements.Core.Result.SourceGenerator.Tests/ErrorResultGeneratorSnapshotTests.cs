@@ -27,10 +27,8 @@ public partial class ErrorResultGeneratorSnapshotTests
 
     public static Task VerifySourceGenerator(string source)
     {
-        // Parse the provided string into a C# syntax tree
         SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(source);
 
-        // Create references for assemblies we require
         IEnumerable<PortableExecutableReference> references =
         [
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
@@ -40,19 +38,15 @@ public partial class ErrorResultGeneratorSnapshotTests
             MetadataReference.CreateFromFile(Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "System.dll"))
         ];
 
-        // Create a Roslyn compilation for the syntax tree.
         CSharpCompilation compilation = CSharpCompilation.Create(
             assemblyName: "Tests",
             syntaxTrees: [syntaxTree],
             references: references);
 
-        // Create an instance of our ErrorResult incremental source generator
         ErrorResultGenerator generator = new();
 
-        // The GeneratorDriver is used to run our generator against a compilation
         GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
 
-        // Run the source generator!
         driver = driver.RunGenerators(compilation);
 
         return Verify(driver);
