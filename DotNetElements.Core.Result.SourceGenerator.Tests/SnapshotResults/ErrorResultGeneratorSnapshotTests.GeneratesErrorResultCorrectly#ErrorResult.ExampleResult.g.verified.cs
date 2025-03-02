@@ -41,8 +41,8 @@ namespace DotNetElements.Core.Result.Examples
     
         // Optional conversions
         public ExampleResultHelper.ExampleResult AsCrudResult() => IsOk ? ExampleResultHelper.ExampleResult.Ok() : ExampleResultHelper.ExampleResult.Fail(Error);
-        public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
-        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
+        public DotNetElements.Core.Result.Result AsResult() => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
+        public DotNetElements.Core.Result.Result<TValue> AsResultWithValue() => IsOk ? DotNetElements.Core.Result.Result<TValue>.Ok(Value) : DotNetElements.Core.Result.Result<TValue>.Fail();
     }
         
     public static partial class ExampleResultHelper
