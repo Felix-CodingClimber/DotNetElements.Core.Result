@@ -19,6 +19,7 @@ internal static class ErrorResultOutputWriter
 #nullable enable
 
 using System.Diagnostics.CodeAnalysis;
+using DotNetElements.Core.Result;
 ");
 		if (result.NameSpace is not null)
 		{
@@ -55,8 +56,8 @@ namespace ").Append(result.NameSpace).Append(@"
     
         // Optional conversions
         public ").Append(result.SimpleNameHelper).Append(" AsCrudResult() => IsOk ? ").Append(result.SimpleNameHelper).Append(".Ok() : ").Append(result.SimpleNameHelper).Append(@".Fail(Error);
-        public DotNetElements.Core.Result.Result AsResult() => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
-        public DotNetElements.Core.Result.Result<TValue> AsResultWithValue() => IsOk ? DotNetElements.Core.Result.Result<TValue>.Ok(Value) : DotNetElements.Core.Result.Result<TValue>.Fail();
+        public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
+        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }
         ");
 
