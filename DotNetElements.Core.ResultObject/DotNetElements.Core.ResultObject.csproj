@@ -8,11 +8,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\DotNetElements.Core.ResultObject.SourceGenerator\DotNetElements.Core.ResultObject.SourceGenerator.csproj" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\DotNetElements.Core.Result.SourceGenerator\bin\$(Configuration)\netstandard2.0\DotNetElements.Core.Result.SourceGenerator.dll" PackagePath="analyzers\dotnet\cs" Pack="true" Visible="false" />
+		<None Include="..\DotNetElements.Core.ResultObject.SourceGenerator\bin\$(Configuration)\netstandard2.0\DotNetElements.Core.ResultObject.SourceGenerator.dll" PackagePath="analyzers\dotnet\cs" Pack="true" Visible="false" />
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -30,7 +30,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\README.md" Pack="true" PackagePath="\"/>
-		<None Include="..\brand\logo-small-nuget.png" Pack="true" PackagePath="\"/>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\brand\logo-small-nuget.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>

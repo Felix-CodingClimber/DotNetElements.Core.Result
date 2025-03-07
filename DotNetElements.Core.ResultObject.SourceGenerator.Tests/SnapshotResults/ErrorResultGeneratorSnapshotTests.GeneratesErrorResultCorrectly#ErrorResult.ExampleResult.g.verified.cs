@@ -10,9 +10,9 @@
 #nullable enable
 
 using System.Diagnostics.CodeAnalysis;
-using DotNetElements.Core.Result;
+using DotNetElements.Core.ResultObject;
 
-namespace DotNetElements.Core.Result.Examples
+namespace DotNetElements.Core.ResultObject.Examples
 {
     public partial class ExampleResult<TValue> : ErrorResult<int>
     {
@@ -42,8 +42,8 @@ namespace DotNetElements.Core.Result.Examples
     
         // Optional conversions
         public ExampleResultHelper.ExampleResult AsCrudResult() => IsOk ? ExampleResultHelper.ExampleResult.Ok() : ExampleResultHelper.ExampleResult.Fail(Error);
-        public DotNetElements.Core.Result.Result AsResult() => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
-        public DotNetElements.Core.Result.Result<TValue> AsResultWithValue() => IsOk ? DotNetElements.Core.Result.Result<TValue>.Ok(Value) : DotNetElements.Core.Result.Result<TValue>.Fail();
+        public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
+        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }
         
     public static partial class ExampleResultHelper
@@ -56,7 +56,7 @@ namespace DotNetElements.Core.Result.Examples
             public static ExampleResult Fail(int error) => new(false, error);
 
             // Optional conversions 
-            public DotNetElements.Core.Result.Result AsResult => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
+            public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
 
         public static ExampleResult Fail(int error) => ExampleResult.Fail(error);
@@ -65,6 +65,21 @@ namespace DotNetElements.Core.Result.Examples
             logAction.Invoke();
 
             return ExampleResult.Fail(error);
+        }
+
+        public static ExampleResult<TValue> OkIf<TValue>(bool isSuccess, TValue value, int error)
+        {
+            return isSuccess ? value : ExampleResult<TValue>.Fail(error);
+        }
+
+        public static ExampleResult<TValue> OkIf<TValue>(Func<bool> predicate, TValue value, int error)
+        {
+            return predicate.Invoke() ? value : ExampleResult<TValue>.Fail(error);
+        }
+
+        public static ExampleResult<TValue> OkIfNotNull<TValue>(TValue? value, int error)
+        {
+            return value is not null ? value : ExampleResult<TValue>.Fail(error);
         }
     }
 }

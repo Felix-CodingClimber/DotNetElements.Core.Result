@@ -1,4 +1,4 @@
-namespace DotNetElements.Core.Result.Tests;
+namespace DotNetElements.Core.ResultObject.Tests;
 
 [TestClass]
 public class ResultTests

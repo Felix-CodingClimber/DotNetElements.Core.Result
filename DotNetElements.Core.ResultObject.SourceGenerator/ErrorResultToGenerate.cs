@@ -1,4 +1,4 @@
-﻿namespace DotNetElements.Core.Result.SourceGenerator;
+﻿namespace DotNetElements.Core.ResultObject.SourceGenerator;
 
 internal readonly record struct ErrorResultToGenerate
 {

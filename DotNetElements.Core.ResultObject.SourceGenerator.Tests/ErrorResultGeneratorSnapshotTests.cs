@@ -1,9 +1,9 @@
 using System.Runtime.InteropServices;
-using DotNetElements.Core.Result.SourceGenerator;
+using DotNetElements.Core.ResultObject.SourceGenerator;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace DotNetElements.Core.Result.Tests;
+namespace DotNetElements.Core.ResultObject.Tests;
 
 [TestClass]
 [UsesVerify]
@@ -13,10 +13,10 @@ public partial class ErrorResultGeneratorSnapshotTests
     public Task GeneratesErrorResultCorrectly()
     {
         string source =
-		@"
-            using DotNetElements.Core.Result;
+        @"
+            using DotNetElements.Core.ResultObject;
 
-            namespace DotNetElements.Core.Result.Examples;
+            namespace DotNetElements.Core.ResultObject.Examples;
 
             [ErrorResult<int>]
             public partial class ExampleResult<TValue>;

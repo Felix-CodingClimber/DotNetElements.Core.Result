@@ -1,4 +1,4 @@
-﻿namespace DotNetElements.Core.Result.Examples;
+﻿namespace DotNetElements.Core.ResultObject.Examples;
 
 public enum ExampleError
 {

@@ -21,8 +21,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\DotNetElements.Core.Result.SourceGenerator\DotNetElements.Core.Result.SourceGenerator.csproj" />
-		<ProjectReference Include="..\DotNetElements.Core.Result\DotNetElements.Core.Result.csproj" />
+		<ProjectReference Include="..\DotNetElements.Core.ResultObject.SourceGenerator\DotNetElements.Core.ResultObject.SourceGenerator.csproj" />
+		<ProjectReference Include="..\DotNetElements.Core.ResultObject\DotNetElements.Core.ResultObject.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

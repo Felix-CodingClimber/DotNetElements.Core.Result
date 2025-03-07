@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DotNetElements.Core.Result.SourceGenerator;
+namespace DotNetElements.Core.ResultObject.SourceGenerator;
 
 internal static class ErrorResultOutputWriter
 {
@@ -19,7 +19,7 @@ internal static class ErrorResultOutputWriter
 #nullable enable
 
 using System.Diagnostics.CodeAnalysis;
-using DotNetElements.Core.Result;
+using DotNetElements.Core.ResultObject;
 ");
 		if (result.NameSpace is not null)
 		{
@@ -56,8 +56,8 @@ namespace ").Append(result.NameSpace).Append(@"
     
         // Optional conversions
         public ").Append(result.SimpleNameHelper).Append(" AsCrudResult() => IsOk ? ").Append(result.SimpleNameHelper).Append(".Ok() : ").Append(result.SimpleNameHelper).Append(@".Fail(Error);
-        public DotNetElements.Core.Result.Result AsResult() => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
-        public DotNetElements.Core.Result.Result<TValue> AsResultWithValue() => IsOk ? DotNetElements.Core.Result.Result<TValue>.Ok(Value) : DotNetElements.Core.Result.Result<TValue>.Fail();
+        public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
+        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }
         ");
 
@@ -72,7 +72,7 @@ namespace ").Append(result.NameSpace).Append(@"
             public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(@" error) => new(false, error);
 
             // Optional conversions 
-            public DotNetElements.Core.Result.Result AsResult => IsOk ? DotNetElements.Core.Result.Result.Ok() : DotNetElements.Core.Result.Result.Fail();
+            public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
 
         public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(" error) => ").Append(result.SimpleName).Append(@".Fail(error);
@@ -81,6 +81,21 @@ namespace ").Append(result.NameSpace).Append(@"
             logAction.Invoke();
 
             return ").Append(result.SimpleName).Append(@".Fail(error);
+        }
+
+        public static ").Append(result.FullName).Append(@" OkIf<TValue>(bool isSuccess, TValue value, ").Append(result.TError).Append(@" error)
+        {
+            return isSuccess ? value : ").Append(result.FullName).Append(@".Fail(error);
+        }
+
+        public static ").Append(result.FullName).Append(@" OkIf<TValue>(Func<bool> predicate, TValue value, ").Append(result.TError).Append(@" error)
+        {
+            return predicate.Invoke() ? value : ").Append(result.FullName).Append(@".Fail(error);
+        }
+
+        public static ").Append(result.FullName).Append(@" OkIfNotNull<TValue>(TValue? value, ").Append(result.TError).Append(@" error)
+        {
+            return value is not null ? value : ").Append(result.FullName).Append(@".Fail(error);
         }
     }");
 
