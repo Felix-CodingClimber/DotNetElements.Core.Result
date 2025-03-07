@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace DotNetElements.Core.Result.Tests;
+namespace DotNetElements.Core.ResultObject.Tests;
 
 internal static class CSharpCompilationDebugHelper
 {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace DotNetElements.Core.Result.Tests;
+namespace DotNetElements.Core.ResultObject.Tests;
 
 public static class ModuleInitializer
 {

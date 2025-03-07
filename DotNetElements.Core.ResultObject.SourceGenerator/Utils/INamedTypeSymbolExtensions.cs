@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace DotNetElements.Core.Result.SourceGenerator.Utils;
+namespace DotNetElements.Core.ResultObject.SourceGenerator.Utils;
 
 internal static class INamedTypeSymbolExtensions
 {

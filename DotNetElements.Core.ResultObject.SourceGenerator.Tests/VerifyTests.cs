@@ -1,4 +1,4 @@
-﻿namespace DotNetElements.Core.Result.SourceGenerator.Tests;
+﻿namespace DotNetElements.Core.ResultObject.SourceGenerator.Tests;
 
 [TestClass]
 [UsesVerify]

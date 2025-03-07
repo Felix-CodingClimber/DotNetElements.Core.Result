@@ -1,14 +1,14 @@
 ﻿using System.Text;
-using DotNetElements.Core.Result.SourceGenerator.Utils;
+using DotNetElements.Core.ResultObject.SourceGenerator.Utils;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetElements.Core.Result.SourceGenerator;
+namespace DotNetElements.Core.ResultObject.SourceGenerator;
 
 [Generator]
 public class ErrorResultGenerator : IIncrementalGenerator
 {
-    private const string ErrorResultAttributeNamespace = "DotNetElements.Core.Result";
+    private const string ErrorResultAttributeNamespace = "DotNetElements.Core.ResultObject";
     private const string ErrorResultAttributeShortName = "ErrorResult";
     private const string ErrorResultAttributeTypeName = $"{ErrorResultAttributeShortName}Attribute`1";
     private const string ErrorResultAttributeFullName = $"{ErrorResultAttributeNamespace}.{ErrorResultAttributeTypeName}";
