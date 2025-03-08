@@ -55,7 +55,6 @@ namespace ").Append(result.NameSpace).Append(@"
         public static implicit operator ").Append(result.FullName).Append("(").Append(result.SimpleNameHelper).Append(@" result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException(""Can not convert a successful result to a result with a value"");
     
         // Optional conversions
-        public ").Append(result.SimpleNameHelper).Append(" AsCrudResult() => IsOk ? ").Append(result.SimpleNameHelper).Append(".Ok() : ").Append(result.SimpleNameHelper).Append(@".Fail(Error);
         public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
         public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }

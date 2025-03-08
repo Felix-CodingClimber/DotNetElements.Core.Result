@@ -41,7 +41,6 @@ namespace DotNetElements.Core.ResultObject.Examples
         public static implicit operator ExampleResult<TValue>(ExampleResultHelper.ExampleResult result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException("Can not convert a successful result to a result with a value");
     
         // Optional conversions
-        public ExampleResultHelper.ExampleResult AsCrudResult() => IsOk ? ExampleResultHelper.ExampleResult.Ok() : ExampleResultHelper.ExampleResult.Fail(Error);
         public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
         public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }

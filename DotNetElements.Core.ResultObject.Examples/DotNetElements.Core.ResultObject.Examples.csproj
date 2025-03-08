@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DotNetElements.Core.Result" Version="0.0.4" />
+		<PackageReference Include="DotNetElements.Core.Result" Version="0.1.3" />
 	</ItemGroup>
 
 </Project>
