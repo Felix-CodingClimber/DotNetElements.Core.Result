@@ -54,6 +54,52 @@ public readonly struct Result
     public static implicit operator Result(ResultFail _) => new Result(false);
 }
 
+public readonly struct ResultWithError
+{
+    public bool IsOk { get; private init; }
+
+    public bool IsFail => !IsOk;
+
+    private readonly string? error;
+
+    private ResultWithError(bool isOk, string? error = null)
+    {
+        IsOk = isOk;
+        this.error = error;
+    }
+
+    public static ResultWithError Ok() => new(true);
+    public static ResultWithError Fail(string error) => new(false, error);
+
+    public bool HasError([NotNullWhen(true)] out string? error)
+    {
+        error = this.error;
+
+        return IsFail;
+    }
+
+    public string GetErrorUnsafe() => error ?? throw new ResultOkException();
+
+    // Optional conversions
+    public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
+
+    // Helper methods
+    public static ResultWithError OkIf(bool isSuccess, string error)
+    {
+        return isSuccess ? Ok() : Fail(error);
+    }
+
+    public static ResultWithError OkIf(Func<bool> predicate, string error)
+    {
+        return predicate.Invoke() ? Ok() : Fail(error);
+    }
+
+    public static ResultWithError OkIfNotNull<TValue>(TValue? value, string error)
+    {
+        return value is not null ? Ok() : Fail(error);
+    }
+}
+
 public abstract class ErrorResult<TError>
 {
     public bool IsOk { get; private init; }
@@ -78,7 +124,9 @@ public abstract class ErrorResult<TError>
     public TError GetErrorUnsafe() => Error ?? throw new ResultOkException();
 }
 
+// todo check if this is needed
 public readonly struct ResultOk;
+// todo check if this is needed
 public readonly struct ResultFail;
 
 public static partial class ResultHelper
