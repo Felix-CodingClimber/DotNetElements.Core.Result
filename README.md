@@ -15,7 +15,7 @@ There are helper functions like `Fail()`, `Ok()` or `TryGetValue(out string? res
 
 2. Add the following to a GlobalUsing.cs
 ```cs
-global using static DotNetElements.Core.Result.ResultHelper;
+global using static DotNetElements.Core.ResultObject.ResultHelper;
 ```
 
 ## Usage examples for basic Result and Result<TValue> types
