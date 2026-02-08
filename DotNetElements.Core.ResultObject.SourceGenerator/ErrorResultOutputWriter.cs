@@ -21,13 +21,13 @@ internal static class ErrorResultOutputWriter
 using System.Diagnostics.CodeAnalysis;
 using DotNetElements.Core.ResultObject;
 ");
-		if (result.NameSpace is not null)
-		{
+        if (result.NameSpace is not null)
+        {
             sb.Append(@"
 namespace ").Append(result.NameSpace).Append(@"
 {
     ");
-		}
+        }
         sb.Append(result.Accessibility).Append(" partial class ").Append(result.FullName).Append(" : ErrorResult<").Append(result.TError).Append(@">
     {
         protected readonly TValue Value;
@@ -52,12 +52,12 @@ namespace ").Append(result.NameSpace).Append(@"
         public TValue GetValueUnsafe() => Value ?? throw new ResultFailException();
     
         // Implicit conversions
+        public static implicit operator ").Append(result.FullName).Append(@"(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!)
         public static implicit operator ").Append(result.FullName).Append(@"(TValue value) => new(true, value, default!);
         public static implicit operator ").Append(result.FullName).Append("(").Append(result.SimpleNameHelper).Append(@" result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException(""Can not convert a successful result to a result with a value"");
     
         // Optional conversions
         public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
-        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }
         ");
 
@@ -71,11 +71,12 @@ namespace ").Append(result.NameSpace).Append(@"
             public static ").Append(result.SimpleName).Append(@" Ok() => new(true, default!);
             public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(@" error) => new(false, error);
 
+            // Implicit conversions
+            public static implicit operator ").Append(result.SimpleName).Append(@"(ResultOk _) => new(true, default!);
+
             // Optional conversions 
             public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
-
-        public static ").Append(result.FullName).Append(" Ok<TValue>(TValue value) => ").Append(result.FullName).Append(@".Ok(value);
 
         public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(" error) => ").Append(result.SimpleName).Append(@".Fail(error);
         public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(@" error, Action logAction)
@@ -101,9 +102,9 @@ namespace ").Append(result.NameSpace).Append(@"
         }
     }");
 
-        if(result.NameSpace is not null)
+        if (result.NameSpace is not null)
         {
-		    sb.Append(@"
+            sb.Append(@"
 }");
         }
 

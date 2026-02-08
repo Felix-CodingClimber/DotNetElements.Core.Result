@@ -25,6 +25,16 @@ static ExampleErrorResult<string> GetSuccessExampleResult()
     return Ok("Hello, World!");
 }
 
+static ExampleErrorResult GetFailedExampleResultWithoutValue()
+{
+    return Fail(ExampleError.BadError);
+}
+
+static ExampleErrorResult GetSuccessExampleResultWithoutValue()
+{
+    return Ok();
+}
+
 static Result<string> GetFailedResult()
 {
     return Fail();

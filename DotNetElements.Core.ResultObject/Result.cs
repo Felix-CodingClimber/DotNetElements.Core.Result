@@ -16,8 +16,8 @@ public readonly struct Result<TValue>
         this.value = value;
     }
 
-    public static Result<TValue> Ok(TValue value) => new(true, value);
-    public static Result<TValue> Fail() => new Result<TValue>(false, default!);
+    internal static Result<TValue> Ok(TValue value) => new(true, value);
+    internal static Result<TValue> Fail() => new Result<TValue>(false, default!);
 
     public static implicit operator Result<TValue>(TValue value) => new(true, value);
     public static implicit operator Result<TValue>(ResultFail _) => new(false, default!);

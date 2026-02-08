@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="DotNetElements.Core.ResultObject.Tests" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\DotNetElements.Core.ResultObject.SourceGenerator\DotNetElements.Core.ResultObject.SourceGenerator.csproj" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 

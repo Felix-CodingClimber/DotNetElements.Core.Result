@@ -38,12 +38,12 @@ namespace DotNetElements.Core.ResultObject.Examples
         public TValue GetValueUnsafe() => Value ?? throw new ResultFailException();
     
         // Implicit conversions
+        public static implicit operator ExampleResult<TValue>(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!)
         public static implicit operator ExampleResult<TValue>(TValue value) => new(true, value, default!);
         public static implicit operator ExampleResult<TValue>(ExampleResultHelper.ExampleResult result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException("Can not convert a successful result to a result with a value");
     
         // Optional conversions
         public Result AsResult() => IsOk ? Result.Ok() : Result.Fail();
-        public Result<TValue> AsResultWithValue() => IsOk ? Result<TValue>.Ok(Value) : Result<TValue>.Fail();
     }
         
     public static partial class ExampleResultHelper
@@ -55,11 +55,12 @@ namespace DotNetElements.Core.ResultObject.Examples
             public static ExampleResult Ok() => new(true, default!);
             public static ExampleResult Fail(int error) => new(false, error);
 
+            // Implicit conversions
+            public static implicit operator ExampleResult(ResultOk _) => new(true, default!);
+
             // Optional conversions 
             public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
-
-        public static ExampleResult<TValue> Ok<TValue>(TValue value) => ExampleResult<TValue>.Ok(value);
 
         public static ExampleResult Fail(int error) => ExampleResult.Fail(error);
         public static ExampleResult Fail(int error, Action logAction)
