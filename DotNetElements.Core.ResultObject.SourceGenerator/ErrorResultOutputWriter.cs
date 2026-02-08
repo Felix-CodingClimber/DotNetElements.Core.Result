@@ -52,7 +52,7 @@ namespace ").Append(result.NameSpace).Append(@"
         public TValue GetValueUnsafe() => Value ?? throw new ResultFailException();
     
         // Implicit conversions
-        public static implicit operator ").Append(result.FullName).Append(@"(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!)
+        public static implicit operator ").Append(result.FullName).Append(@"(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!);
         public static implicit operator ").Append(result.FullName).Append(@"(TValue value) => new(true, value, default!);
         public static implicit operator ").Append(result.FullName).Append("(").Append(result.SimpleNameHelper).Append(@" result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException(""Can not convert a successful result to a result with a value"");
     

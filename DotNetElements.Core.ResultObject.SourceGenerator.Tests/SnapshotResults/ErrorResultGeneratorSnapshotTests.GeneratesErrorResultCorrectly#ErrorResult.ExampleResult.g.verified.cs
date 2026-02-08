@@ -38,7 +38,7 @@ namespace DotNetElements.Core.ResultObject.Examples
         public TValue GetValueUnsafe() => Value ?? throw new ResultFailException();
     
         // Implicit conversions
-        public static implicit operator ExampleResult<TValue>(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!)
+        public static implicit operator ExampleResult<TValue>(Result<TValue> value) => new(true, value.GetValueUnsafe(), default!);
         public static implicit operator ExampleResult<TValue>(TValue value) => new(true, value, default!);
         public static implicit operator ExampleResult<TValue>(ExampleResultHelper.ExampleResult result) => result.IsFail ? new(false, default!, result.GetErrorUnsafe()) : throw new ResultException("Can not convert a successful result to a result with a value");
     
