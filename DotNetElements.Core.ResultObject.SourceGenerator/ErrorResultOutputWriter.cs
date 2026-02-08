@@ -37,6 +37,7 @@ namespace ").Append(result.NameSpace).Append(@"
             Value = value;
         }
     
+        public static ").Append(result.FullName).Append(@" Ok(TValue value) => new(true, value, default!);
         public static ").Append(result.FullName).Append(" Fail(").Append(result.TError).Append(@" error) => new(false, default!, error);
     
         // Optional helper functions 
@@ -73,6 +74,8 @@ namespace ").Append(result.NameSpace).Append(@"
             // Optional conversions 
             public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
+
+        public static ").Append(result.FullName).Append(" Ok<TValue>(TValue value) => ").Append(result.FullName).Append(@".Ok(value);
 
         public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(" error) => ").Append(result.SimpleName).Append(@".Fail(error);
         public static ").Append(result.SimpleName).Append(" Fail(").Append(result.TError).Append(@" error, Action logAction)

@@ -23,6 +23,7 @@ namespace DotNetElements.Core.ResultObject.Examples
             Value = value;
         }
     
+        public static ExampleResult<TValue> Ok(TValue value) => new(true, value, default!);
         public static ExampleResult<TValue> Fail(int error) => new(false, default!, error);
     
         // Optional helper functions 
@@ -57,6 +58,8 @@ namespace DotNetElements.Core.ResultObject.Examples
             // Optional conversions 
             public Result AsResult => IsOk ? Result.Ok() : Result.Fail();
         }
+
+        public static ExampleResult<TValue> Ok<TValue>(TValue value) => ExampleResult<TValue>.Ok(value);
 
         public static ExampleResult Fail(int error) => ExampleResult.Fail(error);
         public static ExampleResult Fail(int error, Action logAction)
