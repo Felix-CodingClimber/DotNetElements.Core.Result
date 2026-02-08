@@ -132,6 +132,7 @@ public readonly struct ResultFail;
 public static partial class ResultHelper
 {
     public static ResultOk Ok() => new ResultOk();
+    public static Result<TValue> Ok<TValue>(TValue value) => Result<TValue>.Ok(value);
 
     public static ResultFail Fail() => new ResultFail();
     public static ResultFail Fail(Action logAction)
